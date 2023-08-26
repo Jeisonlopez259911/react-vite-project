@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Datepicker, Input, initTE } from "tw-elements";
 import { BsFillAirplaneFill } from "react-icons/bs";
+import { Canvas } from '@react-three/fiber'
 import "./App.css"
 
 function App() {
@@ -55,8 +56,31 @@ function App() {
           Button
         </button>
       </div>
-      <div className="bg-[#071D26] grid justify-items-stretch px-6  pb-20 ">
-        <BsFillAirplaneFill className="text-[#F2E7DC] justify-self-center  animate-fade-up animate-twiceanimate-fade-up animate-infinite animate-delay-300"/>
+      <div className="grid justify-items-stretch">
+        <div className="bg-[#071D26] grid justify-items-stretch justify-self-center px-6 w-20 pb-20 ">
+          <BsFillAirplaneFill className="text-[#F2E7DC] justify-self-center  animate-fade-up animate-twiceanimate-fade-up animate-infinite animate-delay-300" />
+        </div>
+      </div>
+      <div>
+        <Canvas>
+          <ambientLight intensity={0.1} />
+          <directionalLight color="#9FC131" position={[0, 0, 5]} />
+
+          <mesh>
+            <boxGeometry args={[2, 2, 2]} />
+            <meshStandardMaterial />
+          </mesh>
+
+        </Canvas>
+      </div>
+      <div>
+        <Canvas  className="animate-rotate-y animate-infinite animate-duration-[1500ms] animate-delay-[50ms] animate-ease-in animate-reverse animate-fill-backwards">
+          <directionalLight color="#DBF227" position={[60, 60, 60]} />
+          <mesh>
+            <sphereGeometry/>
+            <meshStandardMaterial />
+          </mesh>
+        </Canvas>
       </div>
     </>
   )
