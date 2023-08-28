@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Datepicker, Input, initTE } from "tw-elements";
 import { BsFillAirplaneFill } from "react-icons/bs";
 import { Canvas } from '@react-three/fiber'
 import "./App.css"
 
 function App() {
+
+  const [clickButton, setClickButton] = useState(0);
+
+  const clickCambio = () => {
+    setClickButton(clickButton + 1);
+  }
+
+
 
   useEffect(() => {
     initTE({ Datepicker, Input });
@@ -49,13 +57,16 @@ function App() {
           bulk of the card's content.
         </p>
         <button
+          onClick={clickCambio}
           type="button"
           className="inline-block rounded bg-[#025951] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
           data-te-ripple-init
           data-te-ripple-color="light">
           Button
         </button>
+        <h2>hiciste click {clickButton} veces</h2>
       </div>
+ 
       <div className="grid justify-items-stretch">
         <div className="bg-[#071D26] grid justify-items-stretch justify-self-center px-6 w-20 pb-20 ">
           <BsFillAirplaneFill className="text-[#F2E7DC] justify-self-center  animate-fade-up animate-twiceanimate-fade-up animate-infinite animate-delay-300" />
